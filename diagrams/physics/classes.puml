@@ -1,0 +1,41 @@
+@startuml "physics classes"
+
+set namespaceSeparator ::
+
+struct Math::Vector3<T> {}
+
+class Physics::Particle<T> {
+    -T mass
+    -Vector3<T> position
+    -Vector3<T> velocity
+    -Vector3<T> acceleration
+    -Vector3<T> forceAccumulator
+
+    +Particle()
+    +Particle(const Vector3<T>& position, const Vector3<T>& velocity, const Vector3<T>& acceleration)
+
+    +void integrate(T duration)
+    +void addForce(const Vector3<T>& force)
+    -void clearAccumulator()
+
+    +Vector3<T> getPosition() const
+    +void setPosition(const Vector3<T>& position)
+
+    +Vector3<T> getVelocity() const
+    +void setVelocity(const Vector3<T>& velocity)
+
+    +Vector3<T> getAcceleration() const
+    +void setAcceleration(const Vector3<T>& acceleration)
+
+    +T getMass() const
+    +void setMass(T mass)
+}
+
+interface Physics::ForceGenerator {
+    {abstract} +void applyForce(Particle<T>& particle, T duration)
+}
+
+Vector3 --* Particle
+Particle --* ForceGenerator
+
+@enduml

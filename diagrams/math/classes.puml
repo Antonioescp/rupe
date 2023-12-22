@@ -1,0 +1,70 @@
+@startuml "math classes"
+
+set namespaceSeparator ::
+
+struct Math::Vector3<T> {
+    ==Fields==
+    +T x
+    +T y
+    +T z
+
+    == Methods ==
+    --Initialization--
+    +Vector3()
+    +Vector3(const Vector3&)
+    +Vector3(const Vecotr3&&)
+    +Vector3(T, T, T)
+    +Vector3(Vector3)
+    +explicit Vector3(const Vector2&)
+
+    --Vector-Vector Operations--
+    +Vector3 operator+(Vector3) const
+    +Vector3 operator+=(Vector3)
+    +Vector3 operator-(Vector3) const
+    +Vector3 operator-=(Vector3)
+    +T dot(Vector3) const
+    +Vector3 cross(Vector3) const
+    +const Vector3 crossAsign(Vector3)
+    +T angleBetween(Vector3) const;
+
+    --Scalar Arithmetic--
+    +Vector3 operator*(Number) const
+    +const Vector3& operator*=(Number)
+    +Vector3 operator/(Number) const
+    +const Vector3& operator/=(Number)
+
+    --Vector Functions--
+    +T magnitude() const
+    +T magnitudeSquared() const
+    +const Vector3& normalize()
+    +Vector3 normalized() const
+}
+
+struct Math::Vector2<T> {
+    ==Fields==
+    +T x
+    +T y
+
+    == Methods ==
+    --Vector Arithmetic--
+    +Vector2 operator+(Vector2) const
+    +Vector2 operator+=(Vector2) const
+    +Vector2 operator-(Vector2) const
+    +Vector2 operator-=(Vector2) const
+    +T dot(Vector2) const
+    +T angleBetween(Vector2) const
+
+    --Scalar Arithmetic--
+    +Vector2 operator*(Number) const
+    +const Vector2& operator*=(Number)
+    +Vector2 operator/(Number) const
+    +const Vector2& operator/=(Number)
+
+    --Vector Functions--
+    +T magnitude() const
+    +T magnitudeSquared() const
+    +const Vector2& normalize()
+    +Vector2 normalized() const
+}
+
+@enduml
