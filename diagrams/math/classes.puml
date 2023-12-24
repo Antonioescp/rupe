@@ -11,33 +11,34 @@ struct Math::Vector3<T> {
     == Methods ==
     --Initialization--
     +Vector3()
-    +Vector3(const Vector3&)
-    +Vector3(Vector3&&)
-    
+
     +Vector3(T, T, T)
-    +explicit Vector3(const Vector2&)
+    +Vector3(Vector2)
+    +Vector3(Vector3)
 
     --Vector-Vector Operations--
-    +Vector3 operator+(Vector3) const
+    +Vector3 operator+(Vector3)
     +Vector3 operator+=(Vector3)
-    +Vector3 operator-(Vector3) const
+    +Vector3 operator-(Vector3)
     +Vector3 operator-=(Vector3)
-    +T dot(Vector3) const
-    +Vector3 cross(Vector3) const
-    +const Vector3 crossAsign(Vector3)
-    +T angleBetween(Vector3) const;
+    +T dot(Vector3)
+    +Vector3 cross(Vector3)
+    +Vector3 crossAsign(Vector3)
+    +T angleBetween(Vector3)
+    +Vector3 componentProduct(Vector3)
+    +Vector3 componentProductAssign(Vector3)
 
     --Scalar Arithmetic--
-    +Vector3 operator*(Number) const
-    +const Vector3& operator*=(Number)
-    +Vector3 operator/(Number) const
-    +const Vector3& operator/=(Number)
+    +Vector3 operator*(Number)
+    +Vector3 operator*=(Number)
+    +Vector3 operator/(Number)
+    +Vector3 operator/=(Number)
 
     --Vector Functions--
-    +T magnitude() const
-    +T squareMagnitude() const
-    +const Vector3& normalize()
-    +Vector3 normalized() const
+    +T magnitude()
+    +T squareMagnitude()
+    +Vector3 normalize()
+    +Vector3 normalized()
 }
 
 struct Math::Vector2<T> {

@@ -22,3 +22,14 @@ add_library(RupeLib STATIC
 set_target_properties(RupeLib PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(RupeLib PRIVATE compiler_features compiler_options)
 target_include_directories(RupeLib PUBLIC ./include)
+
+enable_testing()
+
+file(GLOB_RECURSE TEST_FILES ${PROJECT_SOURCE_DIR}/tests/**/*.test.cpp)
+
+find_package(GTest CONFIG REQUIRED)
+add_executable(RupeTest ${TEST_FILES})
+target_link_libraries(RupeTest RupeLib GTest::gtest_main compiler_features compiler_options)
+
+include(GoogleTest)
+gtest_discover_tests(RupeTest)

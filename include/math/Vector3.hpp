@@ -19,12 +19,23 @@ namespace Rupe::Math {
         T z{};
 
         Vector3() = default;
+
         Vector3(const Vector3&) = default;
+        Vector3& operator=(const Vector3&) = default;
         Vector3(Vector3&&) = default;
+        Vector3& operator=(Vector3&&) = default;
 
         Vector3(T x, T y, T z) : x{ x }, y{ y }, z{ z } { }
 
+        template <typename TSource>
+        requires Concepts::NonNarrowingConversion<TSource, T>
+        explicit Vector3(const Vector3<TSource>& source) : x{ source.x }, y{ source.y }, z{ source.z } {}
+
         // Vector-Vector operations
+        Vector3 operator-() const {
+            return { -x, -y, -z };
+        }
+
         Vector3 operator+(const Vector3& rhs) const {
             return { x + rhs.x, y + rhs.y, z + rhs.z };
         }
@@ -70,10 +81,14 @@ namespace Rupe::Math {
             return std::acos(this->dot(rhs) / this->magnitude() * rhs.magnitude());
         }
 
+        bool operator==(const Vector3& rhs) const {
+            return x == rhs.x && y == rhs.y && z == rhs.z;
+        }
+
         // Vector-Scalar operations
         template <typename Scalar>
         requires std::is_arithmetic_v<Scalar>
-            && Concepts::NonNarrowingConversion<Scalar, T>
+                 && Concepts::NonNarrowingConversion<Scalar, T>
         Vector3 operator*(Scalar rhs) const {
             return {
                 x * rhs,
@@ -87,9 +102,9 @@ namespace Rupe::Math {
         requires std::is_arithmetic_v<Scalar>
                  && Concepts::NonNarrowingConversion<Scalar, T>
         const Vector3& operator*=(Scalar rhs) {
-            x *= rhs.x;
-            y *= rhs.y;
-            z *= rhs.z;
+            x *= rhs;
+            y *= rhs;
+            z *= rhs;
             return *this;
         }
 
