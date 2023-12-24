@@ -12,9 +12,9 @@ struct Math::Vector3<T> {
     --Initialization--
     +Vector3()
     +Vector3(const Vector3&)
-    +Vector3(const Vecotr3&&)
+    +Vector3(Vector3&&)
+    
     +Vector3(T, T, T)
-    +Vector3(Vector3)
     +explicit Vector3(const Vector2&)
 
     --Vector-Vector Operations--
@@ -35,7 +35,7 @@ struct Math::Vector3<T> {
 
     --Vector Functions--
     +T magnitude() const
-    +T magnitudeSquared() const
+    +T squareMagnitude() const
     +const Vector3& normalize()
     +Vector3 normalized() const
 }
@@ -62,7 +62,7 @@ struct Math::Vector2<T> {
 
     --Vector Functions--
     +T magnitude() const
-    +T magnitudeSquared() const
+    +T squareMagnitude() const
     +const Vector2& normalize()
     +Vector2 normalized() const
 }
