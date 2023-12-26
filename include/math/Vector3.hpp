@@ -88,9 +88,9 @@ namespace Rupe::Math {
         /// \return The cross product between vectors
         Vector3 cross(const Vector3& rhs) const {
             return {
-                x * rhs.y - y * rhs.x,
                 y * rhs.z - z * rhs.y,
-                z * rhs.x - x * rhs.z
+                z * rhs.x - x * rhs.z,
+                x * rhs.y - y * rhs.x
             };
         }
 
@@ -98,9 +98,9 @@ namespace Rupe::Math {
         /// \param rhs The other vector
         /// \return A reference to itself
         const Vector3& crossAssign(const Vector3& rhs) {
-            x = x * rhs.y - y * rhs.x;
-            y = y * rhs.z - z * rhs.y;
-            z = z * rhs.x - x * rhs.z;
+            x = y * rhs.z - z * rhs.y;
+            y = z * rhs.x - x * rhs.z;
+            z = x * rhs.y - y * rhs.x;
             return *this;
         }
 
@@ -206,6 +206,23 @@ namespace Rupe::Math {
             if (mag > 0) {
                 (*this) /= mag;
             }
+            return *this;
+        }
+
+        /// Multiplies each vector component respectively
+        /// \param rhs The other vector
+        /// \return A new vector with the result
+        Vector3 componentProduct(const Vector3& rhs) {
+            return { x * rhs.x, y * rhs.y, z * rhs.z };
+        }
+
+        /// Multiplies each vector component respectively and assigns it
+        /// \param rhs The other vector
+        /// \return A reference to itself
+        const Vector3& componentProductAssign(const Vector3& rhs) {
+            x *= rhs.x;
+            y *= rhs.y;
+            z *= rhs.z;
             return *this;
         }
     };
