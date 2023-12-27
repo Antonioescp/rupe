@@ -3,7 +3,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 add_library(compiler_options INTERFACE)
 add_library(compiler_features INTERFACE)
 
-project(Rupe)
+project(Rupe
+        VERSION 0.1.0.0
+        DESCRIPTION "A physics engine library"
+        LANGUAGES CXX)
 
 target_compile_features(compiler_features INTERFACE cxx_std_20)
 

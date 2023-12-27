@@ -2,7 +2,7 @@
 // Created by Toni on 23/12/2023.
 //
 
-#include "physics/Particle.hpp"
+#include "rupe/physics/Particle.hpp"
 
 namespace Rupe {
     namespace Physics {
